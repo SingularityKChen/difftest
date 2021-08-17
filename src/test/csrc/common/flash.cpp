@@ -43,7 +43,7 @@ void flash_read(uint32_t addr, uint64_t *data) {
 void init_flash(void) {
 #ifdef USE_BIN
 
-  flash_fp = fopen("/home/jy/Project/nexus-am/tests/cputest/build/dummy-riscv64-noop.bin", "r");
+  flash_fp = fopen("/home/jy/Project/nexus-am/tests/cputest/build/dummy-riscv64-nucpu.bin", "r");
   if(!flash_fp)
   {
     eprintf(ANSI_COLOR_MAGENTA "[warning] flash img not found\n");

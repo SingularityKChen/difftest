@@ -423,9 +423,9 @@ uint64_t Emulator::execute(uint64_t max_cycle, uint64_t max_instr) {
 inline char* Emulator::timestamp_filename(time_t t, char *buf) {
   char buf_time[64];
   strftime(buf_time, sizeof(buf_time), "%F@%T", localtime(&t));
-  char *noop_home = getenv("NOOP_HOME");
-  assert(noop_home != NULL);
-  int len = snprintf(buf, 1024, "%s/build/%s", noop_home, buf_time);
+  char *nucpu_home = getenv("NUCPU_HOME");
+  assert(nucpu_home != NULL);
+  int len = snprintf(buf, 1024, "%s/build/%s", nucpu_home, "NUCPU");
   return buf + len;
 }
 

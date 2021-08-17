@@ -129,7 +129,7 @@ else
 	@echo "try to get emu.lock ..."
 	ssh -tt $(REMOTE) '$(LOCK_BIN) $(LOCK)'
 	@echo "get lock"
-	ssh -tt $(REMOTE) 'export NOOP_HOME=$(NOOP_HOME); export NEMU_HOME=$(NEMU_HOME); $(MAKE) -C $(NOOP_HOME)/difftest -j230 build_emu_local'
+	ssh -tt $(REMOTE) 'export NUCPU_HOME=$(NUCPU_HOME); export NEMU_HOME=$(NEMU_HOME); $(MAKE) -C $(NUCPU_HOME)/difftest -j230 build_emu_local'
 	@echo "release lock ..."
 	ssh -tt $(REMOTE) 'rm -f $(LOCK)'
 endif
@@ -139,8 +139,8 @@ endif
 B ?= 0
 E ?= 0
 
-ifndef NOOP_HOME
-$(error NOOP_HOME is not set)
+ifndef NUCPU_HOME
+$(error NUCPU_HOME is not set)
 endif
 EMU_FLAGS = -s $(SEED) -b $(B) -e $(E) $(SNAPSHOT_OPTION) $(WAVEFORM) $(EMU_ARGS)
 
