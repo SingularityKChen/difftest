@@ -14,15 +14,18 @@
 # See the Mulan PSL v2 for more details.
 #***************************************************************************************
 
-SIM_TOP    ?= SimTop
-DESIGN_DIR ?= ..
+SIM_TOP   = SimTop
+ROOT_DIR = $(shell cd ../../; pwd)
+DESIGN_DIR = $(ROOT_DIR)/nucpu
+VERILOGFILE_DIR = $(ROOT_DIR)/test_run_dir/NUCPU
+
 NUM_CORES  ?= 1
 
-BUILD_DIR = $(DESIGN_DIR)/build
-SIM_TOP_V = $(BUILD_DIR)/$(SIM_TOP).v
+BUILD_DIR = $(ROOT_DIR)/build
+SIM_TOP_V = $(VERILOGFILE_DIR)/$(SIM_TOP).v
 
 DIFF_SCALA_FILE = $(shell find ./src/main/scala -name '*.scala')
-SCALA_FILE = $(shell find $(DESIGN_DIR)/src/main/scala -name '*.scala')
+SCALA_FILE = $(shell find $(DESIGN_DIR)/src -wholename '*/*.scala')
 
 # generate SimTop.v
 $(SIM_TOP_V): $(DIFF_SCALA_FILE) $(SCALA_FILE)
